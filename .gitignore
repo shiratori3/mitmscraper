@@ -1,0 +1,10 @@
+/.vscode/
+/gitignore/
+/chrome_files/
+*__pycache__/
+*.exe
+*.conf
+*.log
+*.ipynb_checkpoints/
+*.ipynb
+!template.ipynb
