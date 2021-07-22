@@ -1,4 +1,4 @@
-# 基于selenium和mitmproxy的仿真爬虫框架
+# 基于selenium和mitmproxy的仿真爬虫模板
 
 ## 当前实现功能
 
