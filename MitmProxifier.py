@@ -64,7 +64,7 @@ if __name__ == '__main__':
     logging.debug('==========================================================')
 
     my_mitmdump = MitmProxifier()
-    my_mitmdump.start(my_addons, web_client=False)
+    my_mitmdump.start(my_addons, web_client=True)
 
     logging.debug('==========================================================')
     logging.debug('end DEBUG')
