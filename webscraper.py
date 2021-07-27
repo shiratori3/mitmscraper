@@ -33,7 +33,7 @@ if __name__ == '__main__':
     # chrome_opts.add_experimental_option('debuggerAddress', "127.0.0.1:9222")
 
     # start a new chromedriver
-    chrome_opts.add_argument("--user-data-dir=" + r"D:\pycharm\mitmscraper\chrome_files")
+    chrome_opts.add_argument("--user-data-dir=" + r"E:\work_archive\code\python\mitmscraper\chrome_files")
     chrome_opts.add_argument('--ignore-certificate-errors')
     chrome_opts.add_argument('--ignore-ssl-errors')
     chrome_opts.add_experimental_option('excludeSwitches', ['enable-automation', 'load-extension'])  # don't show the bar of automation
@@ -41,7 +41,7 @@ if __name__ == '__main__':
     # set proxy in SwitchyOmega extension or add argument for network traffic capturing
     # chrome_opts.add_argument('--proxy-server=127.0.0.1:8080')
 
-    driver = webdriver.Chrome(executable_path="chromedriver", options=chrome_opts)
+    driver = webdriver.Chrome(executable_path=r"E:\work_archive\code\python\mitmscraper\chromedriver.exe", options=chrome_opts)
 
     url = "https://www.google.com/"
     driver.get(url)
