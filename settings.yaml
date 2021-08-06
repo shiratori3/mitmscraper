@@ -1,0 +1,8 @@
+chrome:
+  user-data-dir: E:\work_archive\code\python\mitmscraper\chrome_files
+path:
+  confpath: d:\pycharm\mitmscraper
+  driver: E:\work_archive\code\python\mitmscraper\chromedriver.exe
+scrapy:
+  base-url: https://www.google.com/
+  domain: google.com

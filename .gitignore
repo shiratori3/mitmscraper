@@ -1,6 +1,6 @@
 /.vscode/
 /gitignore/
-/chrome_files/
+/driver_files/chrome_files/
 /scrape_files/
 *__pycache__/
 *.exe

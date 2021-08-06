@@ -3,19 +3,22 @@
 '''
 @File    :   MitmProxifier.py
 @Author  :   Billy Zhou
-@Time    :   2021/07/20
-@Version :   1.0.0
+@Time    :   2021/08/06
+@Version :   1.0.1
 @Desc    :   None
 '''
 
-
+import sys
 import logging
-import threading
-import asyncio
-from mitmproxy import proxy, options
-from mitmproxy.tools.dump import DumpMaster
-from mitmproxy.tools.web.master import WebMaster
-from MitmAddons import my_addons
+from pathlib import Path
+sys.path.append(str(Path(__file__).parents[2]))
+
+import threading  # noqa: E402
+import asyncio  # noqa: E402
+from mitmproxy import proxy, options  # noqa: E402
+from mitmproxy.tools.dump import DumpMaster  # noqa: E402
+from mitmproxy.tools.web.master import WebMaster  # noqa: E402
+from src.mitm.MitmAddons import my_addons  # noqa: E402
 
 
 class MitmProxifier(object):

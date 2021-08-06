@@ -3,20 +3,24 @@
 '''
 @File    :   MitmAddons.py
 @Author  :   Billy Zhou
-@Time    :   2021/07/21
-@Version :   0.1.0
+@Time    :   2021/08/06
+@Version :   1.0.1
 @Desc    :   None
 '''
 
 
+import sys
 import logging
 import hashlib
 import json
 import cgi
 from pathlib import Path
-from urllib.parse import urlparse
-from mitmproxy import ctx, http
-from mitmproxy import flowfilter
+sys.path.append(str(Path(__file__).parents[2]))
+
+from urllib.parse import urlparse  # noqa: E402
+from mitmproxy import ctx, http  # noqa: E402
+from mitmproxy import flowfilter  # noqa: E402
+from src.manager.ConfManager import conf  # noqa: E402
 
 
 class file_scrape:
@@ -29,7 +33,7 @@ class file_scrape:
         if self.dictpath.exists():
             with open(str(self.dictpath), encoding='utf-8') as json_f:
                 self.scrape_dict = json.load(json_f)
-        self.filter = "url_to_scrape"
+        self.filter = conf.conf_dict['scrapy']['domain']
 
     def request(self, flow: http.HTTPFlow) -> None:
         if self.filter in flow.request.pretty_url:

@@ -3,17 +3,23 @@
 '''
 @File    :   webscraper.py
 @Author  :   Billy Zhou
-@Time    :   2021/07/21
-@Version :   0.1.0
+@Time    :   2021/08/06
+@Version :   1.0.1
 @Desc    :   None
 '''
 
 
+import sys
 import logging
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+from pathlib import Path
+sys.path.append(str(Path(__file__).parents[1]))
+
+from selenium import webdriver  # noqa: E402
+from selenium.webdriver.chrome.options import Options  # noqa: E402
 # chromedriver: https://chromedriver.chromium.org/downloads
 
+from src.manager.ConfManager import conf  # noqa: E402
+logging.info(conf.conf_dict)
 
 if __name__ == '__main__':
     logging.basicConfig(
@@ -33,7 +39,7 @@ if __name__ == '__main__':
     # chrome_opts.add_experimental_option('debuggerAddress', "127.0.0.1:9222")
 
     # start a new chromedriver
-    chrome_opts.add_argument("--user-data-dir=" + r"E:\work_archive\code\python\mitmscraper\chrome_files")
+    chrome_opts.add_argument("--user-data-dir=" + conf.conf_dict['chrome']['user-data-dir'])
     chrome_opts.add_argument('--ignore-certificate-errors')
     chrome_opts.add_argument('--ignore-ssl-errors')
     chrome_opts.add_experimental_option('excludeSwitches', ['enable-automation', 'load-extension'])  # don't show the bar of automation
@@ -41,9 +47,9 @@ if __name__ == '__main__':
     # set proxy in SwitchyOmega extension or add argument for network traffic capturing
     # chrome_opts.add_argument('--proxy-server=127.0.0.1:8080')
 
-    driver = webdriver.Chrome(executable_path=r"E:\work_archive\code\python\mitmscraper\chromedriver.exe", options=chrome_opts)
+    driver = webdriver.Chrome(executable_path=conf.conf_dict['path']['driver'], options=chrome_opts)
 
-    url = "https://www.google.com/"
+    url = conf.conf_dict['scrapy']['base-url']
     driver.get(url)
     print(driver.title)
 
