@@ -14,12 +14,9 @@ import logging
 from pathlib import Path
 sys.path.append(str(Path(__file__).parents[1]))
 
-from selenium import webdriver  # noqa: E402
-from selenium.webdriver.chrome.options import Options  # noqa: E402
-# chromedriver: https://chromedriver.chromium.org/downloads
-
 from src.manager.ConfManager import conf  # noqa: E402
-logging.info(conf.conf_dict)
+from src.driver.Driver import Driver  # noqa: E402
+
 
 if __name__ == '__main__':
     logging.basicConfig(
@@ -31,24 +28,8 @@ if __name__ == '__main__':
     logging.debug('start DEBUG')
     logging.debug('==========================================================')
 
-    # run the selenium driver
-    chrome_opts = Options()
-
-    # two diff ways to capture network traffic by mitmproxy
-    # connect to existing chrome on debug mode
-    # chrome_opts.add_experimental_option('debuggerAddress', "127.0.0.1:9222")
-
-    # start a new chromedriver
-    chrome_opts.add_argument("--user-data-dir=" + conf.conf_dict['chrome']['user-data-dir'])
-    chrome_opts.add_argument('--ignore-certificate-errors')
-    chrome_opts.add_argument('--ignore-ssl-errors')
-    chrome_opts.add_experimental_option('excludeSwitches', ['enable-automation', 'load-extension'])  # don't show the bar of automation
-
-    # set proxy in SwitchyOmega extension or add argument for network traffic capturing
-    # chrome_opts.add_argument('--proxy-server=127.0.0.1:8080')
-
-    driver = webdriver.Chrome(executable_path=conf.conf_dict['path']['driver'], options=chrome_opts)
-
+    driver = Driver(connect_existing=False, existing_port='9222').driver
+ 
     url = conf.conf_dict['scrapy']['base-url']
     driver.get(url)
     print(driver.title)

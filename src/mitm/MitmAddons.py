@@ -27,7 +27,7 @@ class file_scrape:
     def __init__(self):
         self.request_num = 0
         self.response_num = 0
-        self.basepath = Path.cwd().joinpath("scrape_files")
+        self.basepath = Path(conf.conf_dict['path']['scrape_files'])
         self.dictpath = self.basepath.joinpath("scrape_files.json")
         self.scrape_dict = {}
         if self.dictpath.exists():
