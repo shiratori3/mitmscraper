@@ -15,7 +15,7 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).parents[1]))
 
 from src.manager.ConfManager import conf  # noqa: E402
-from src.driver.Driver import Driver  # noqa: E402
+from src.driver.WebDriver import Driver  # noqa: E402
 
 
 if __name__ == '__main__':
